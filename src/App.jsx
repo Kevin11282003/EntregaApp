@@ -22,10 +22,9 @@ function App() {
         <Route path="/Original" element={<Original />} />
         <Route path="/favoritos" element={<Favoritos />} />
         <Route path="/Usuario" element={<Usuario />} />
-        <Route path='/Detalle' element={<Detalle />} />
+        <Route path="/Detalle/:name" element={<Detalle />} />
       </Routes>
     </Router>
-
   )
 }
 
