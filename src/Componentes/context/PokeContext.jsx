@@ -41,6 +41,14 @@ export const PokeProvider = ({ children }) => {
     obtenerDatos();
   }, [tipoSeleccionado]);
 
+  // Obtener los favoritos desde el localStorage al cargar la página
+  useEffect(() => {
+    const favoritosStorage = localStorage.getItem('favoritos');
+    if (favoritosStorage) {
+      setFavoritos(JSON.parse(favoritosStorage)); // Convertimos la cadena JSON a un array
+    }
+  }, []);
+
   // Función para manejar el cambio del tipo seleccionado
   const handleTipoChange = (tipo) => {
     setTipoSeleccionado(tipo);
@@ -54,11 +62,14 @@ export const PokeProvider = ({ children }) => {
   // Función para agregar o eliminar favoritos
   const toggleFavorito = (pokemon) => {
     setFavoritos(prevFavoritos => {
-      if (prevFavoritos.some(fav => fav.id === pokemon.id)) {
-        return prevFavoritos.filter(fav => fav.id !== pokemon.id); // Elimina el favorito
-      } else {
-        return [...prevFavoritos, pokemon]; // Agrega el favorito
-      }
+      const nuevosFavoritos = prevFavoritos.some(fav => fav.id === pokemon.id)
+        ? prevFavoritos.filter(fav => fav.id !== pokemon.id) // Elimina el favorito
+        : [...prevFavoritos, pokemon]; // Agrega el favorito
+
+      // Guardamos los favoritos en el localStorage
+      localStorage.setItem('favoritos', JSON.stringify(nuevosFavoritos));
+
+      return nuevosFavoritos;
     });
   };
 
