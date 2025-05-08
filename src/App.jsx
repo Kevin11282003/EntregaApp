@@ -1,5 +1,6 @@
-import { useState } from 'react'
-import { BrowserRouter as Router, Route, Routes, UNSAFE_DataRouterStateContext } from 'react-router-dom';
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { PokeProvider } from './Componentes/context/PokeContext'; // Importamos el proveedor
 
 
 import './App.css'
@@ -14,6 +15,7 @@ import Menu from './Componentes/Menu/Index';
 function App() {
 
   return (
+    <PokeProvider>
     <Router>
       <Menu />
       <Routes>
@@ -25,6 +27,7 @@ function App() {
         <Route path="/Detalle/:name" element={<Detalle />} />
       </Routes>
     </Router>
+    </PokeProvider>
   )
 }
 
