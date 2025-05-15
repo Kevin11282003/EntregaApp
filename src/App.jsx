@@ -1,34 +1,63 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import { PokeProvider } from './Componentes/context/PokeContext'; // Importamos el proveedor
+import { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
+import { AppProvider } from './contexto/contexto';
 
 
-import './App.css'
-import Aleatorios from './Componentes/Aleatorios/Index'
-import Detalle from './Componentes/Detalle/Index'
-import Favoritos from './Componentes/Favoritos/Index'
-import Listar from './Componentes/Listar/Index'
-import Original from './Componentes/Original/Index'
-import Usuario from './Componentes/Usuario/Index'
-import Menu from './Componentes/Menu/Index';
+import { supabase } from "./supabase";
+import Menu from './componentes/Menu/Index';
+import Aleatorios from './componentes/Aleatorios/Index';
+import Lista from './componentes/Listar/Index';
+import Capturados from './componentes/Capturados/Index';
+import Favoritos from './componentes/Favoritos/Index';
+import Usuarios from './componentes/Usuario/Index';
+import Detalle from './componentes/Detalle/Index';
+import Login from './componentes/login/index';
+import Registro from './componentes/registro/index';
+import Administrador from './componentes/administrador/index';
+
 
 function App() {
+  const [usuario, setUsuario] = useState(null);
+  const [cargando, setCargando] = useState(true);
+
+  useEffect(() => {
+    async function verificarSesion() {
+      const { data: { session } } = await supabase.auth.getSession();
+      setUsuario(session?.user || null);
+      setCargando(false);
+    }
+
+    verificarSesion();
+
+    // Escucha cambios en la sesión
+    supabase.auth.onAuthStateChange((_event, session) => {
+      setUsuario(session?.user || null);
+    });
+  }, []);
+
+
+  if (cargando) return <p>Cargando...</p>;
 
   return (
-    <PokeProvider>
-    <Router>
-      <Menu />
-      <Routes>
-        <Route path="/Listar" element={<Listar />} />
-        <Route path="/aleatorios" element={<Aleatorios />} />
-        <Route path="/Original" element={<Original />} />
-        <Route path="/favoritos" element={<Favoritos />} />
-        <Route path="/Usuario" element={<Usuario />} />
-        <Route path="/Detalle/:name" element={<Detalle />} />
-      </Routes>
-    </Router>
-    </PokeProvider>
-  )
+    <AppProvider>
+      <Router>
+        {usuario && <Menu />}
+
+        <Routes>
+          <Route path="/" element={usuario ? <Lista /> : <Navigate to="/login" />} />
+          <Route path="/usuarios" element={usuario ? <Usuarios /> : <Navigate to="/login" />} />
+          <Route path="/aleatorios" element={usuario ? <Aleatorios /> : <Navigate to="/login" />} />
+          <Route path="/capturados" element={usuario ? <Capturados /> : <Navigate to="/login" />} />
+          <Route path="/favoritos" element={usuario ? <Favoritos /> : <Navigate to="/login" />} />
+          <Route path="/detalle/:name" element={usuario ? <Detalle /> : <Navigate to="/login" />} />
+
+          <Route path="/login" element={<Login/>} />
+          <Route path="/registro" element={<Registro/>} />
+          <Route path="/administrador" element={<Administrador/>} />
+        </Routes>
+      </Router>
+    </AppProvider>
+  );
 }
 
-export default App
+export default App;

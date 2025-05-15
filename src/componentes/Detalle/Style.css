@@ -127,3 +127,23 @@ body {
     }
   }
   
+
+  /* Botón de favorito con estilo moderno */
+.poke-detail button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 24px;
+  border: 2px solid #f9a825;
+  border-radius: 8px;
+  background-color: transparent;
+  color: #f9a825;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.poke-detail button:hover {
+  background-color: #f9a825;
+  color: #121212;
+  transform: scale(1.05);
+  box-shadow: 0 0 10px #f9a82566;
+}
