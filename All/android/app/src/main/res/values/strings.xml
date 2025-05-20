@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">entregaapp</string>
+    <string name="title_activity_main">entregaapp</string>
+    <string name="package_name">com.ejemplo.app</string>
+    <string name="custom_url_scheme">com.ejemplo.app</string>
+</resources>

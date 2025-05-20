@@ -1,0 +1,59 @@
+/* Estilo para el menú de navegación en la parte inferior */
+.c-menu {
+    background-color: #1c1c1c; /* Fondo oscuro */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    position: fixed;
+    bottom: 0; /* Fija el menú en la parte inferior */
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.6);
+  }
+  
+  /* Estilo para los enlaces en el menú */
+  .c-menu a {
+    color: #f0f0f0;
+    font-size: 1.2rem;
+    margin: 0 15px;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 8px 16px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  /* Efecto de hover sobre los enlaces */
+  .c-menu a:hover {
+    background-color: #f9a825; /* Color amarillo brillante */
+    color: #121212; /* Color oscuro para el texto */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  }
+  
+  /* Estilo para el enlace activo (si el usuario está en esa página) */
+  .c-menu a.active {
+    background-color: #f9a825;
+    color: #121212;
+  }
+  
+  /* Estilo para los enlaces cuando son visitados */
+  .c-menu a:visited {
+    color: #bdbdbd;
+  }
+  
+  /* Media query para dispositivos pequeños (móviles) */
+  @media (max-width: 768px) {
+    .c-menu {
+      flex-direction: column;
+      padding: 20px;
+    }
+  
+    .c-menu a {
+      margin: 10px 0;
+      font-size: 1rem;
+      padding: 12px;
+    }
+  }
+  

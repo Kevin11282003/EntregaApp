@@ -1,0 +1,138 @@
+/* Fondo oscuro y fuente clara */
+body {
+    background-color: #121212;
+    color: #f0f0f0;
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Estilo general para la página */
+  .c-lista {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    justify-items: center;
+    margin-top: 20px;
+  }
+  
+  /* Estilo para cada Pokémon en la lista */
+  .c-lista-pokemon {
+    background-color: #1c1c1c;
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    transition: all 0.3s ease;
+    width: 150px;
+  }
+  
+  .c-lista-pokemon:hover {
+    background-color: #333;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.7);
+    transform: scale(1.05);
+  }
+  
+  /* Estilo para el texto y nombre del Pokémon */
+  .c-lista-pokemon p {
+    color: #e0e0e0;
+    font-size: 1.1rem;
+    margin: 10px 0;
+    font-weight: bold;
+  }
+  
+  .c-lista-pokemon img {
+    border-radius: 8px;
+    margin-bottom: 10px;
+    transition: transform 0.3s ease;
+  }
+  
+  .c-lista-pokemon img:hover {
+    transform: scale(1.1);
+  }
+  
+  /* Estilo para el buscador */
+  .c-buscador {
+    width: 100%;
+    max-width: 400px;
+    padding: 12px;
+    margin: 20px auto;
+    border-radius: 8px;
+    border: 1px solid #444;
+    background-color: #2c2c2c;
+    color: #fff;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, border 0.3s ease;
+  }
+  
+  .c-buscador:focus {
+    background-color: #444;
+    border: 1px solid #f9a825;
+    outline: none;
+  }
+  
+  /* Estilo para el filtro de tipos */
+  .c-filtro {
+    background-color: #1c1c1c;
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    margin: 20px auto;
+    text-align: center;
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  /* Estilo para las opciones del filtro */
+  .c-filtro select {
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #444;
+    background-color: #2c2c2c;
+    color: #fff;
+    font-size: 1rem;
+    width: 100%;
+    max-width: 200px;
+    transition: background-color 0.3s ease, border 0.3s ease;
+  }
+  
+  .c-filtro select:focus {
+    background-color: #444;
+    border: 1px solid #f9a825;
+    outline: none;
+  }
+  
+  /* Transiciones suaves para cambios */
+  .c-lista-pokemon:hover, .c-filtro select:hover {
+    background-color: #333;
+    transition: background-color 0.3s ease;
+  }
+  
+  /* Media query para pantallas pequeñas */
+  @media (max-width: 768px) {
+    .c-lista {
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    }
+  
+    .c-lista-pokemon {
+      width: 130px;
+      padding: 15px;
+    }
+  
+    .c-buscador {
+      width: 80%;
+      padding: 10px;
+    }
+  
+    .c-filtro {
+      width: 80%;
+      max-width: 350px;
+    }
+  
+    .c-lista-pokemon p {
+      font-size: 1rem;
+    }
+  }
+  

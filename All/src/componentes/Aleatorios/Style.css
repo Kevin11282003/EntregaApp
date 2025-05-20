@@ -1,0 +1,45 @@
+.aleatorios-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+  
+  .c-lista {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  
+  .c-lista-pokemon {
+    background-color: #212121;
+    border-radius: 8px;
+    padding: 10px;
+    text-align: center;
+    width: 100px;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  .c-lista-pokemon:hover {
+    transform: scale(1.1);
+  }
+  
+  .c-lista-pokemon img {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .c-lista-pokemon p {
+    color: #fff;
+    font-weight: bold;
+    margin-top: 8px;
+  }
+  
+
+
+
+
+  
+  
